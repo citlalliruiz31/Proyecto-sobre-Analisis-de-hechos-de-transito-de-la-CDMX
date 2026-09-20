@@ -17,7 +17,7 @@
 
 El proyecto tiene como propósito analizar los hechos de tránsito registrados en la Ciudad de México para identificar los patrones de **frecuencia y severidad** de estos eventos.
 
-El análisis se enfocará principalmente en conocer las **alcaldías y horarios donde se concentra una mayor cantidad de hechos de tránsito**, así como identificar aquellas zonas y periodos en los que se observa una **mayor severidad registrada**, considerando el número de personas lesionadas y fallecidas.
+El análisis se enfocara principalmente en conocer las **alcaldías y horarios donde se concentra una mayor cantidad de hechos de tránsito**, así como identificar aquellas zonas y periodos en los que se observa una **mayor severidad registrada**,considerando el número de personas lesionadas y fallecidas. 
 ---
 ## Pregunta de negocio
 
