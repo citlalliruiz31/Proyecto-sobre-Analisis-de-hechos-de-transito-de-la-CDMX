@@ -114,6 +114,47 @@ Información para la toma de decisiones
 
 El repositorio se organizará de la siguiente manera:
 
+Proyecto-sobre-Analisis-de-hechos-de-transito-de-la-CDMX
+│
+├── 📂 Bitacora
+│   └── 📄 Bitacora_AC.md
+│
+├── 📂 Data
+│   └── 📓 Primera_Lectura.ipynb
+│
+├── 📂 Docs
+│   │
+│   ├── 📂 Diccionario_o_metadatos
+│   │   ├── 📊 DiccionarioDatos_C5.xlsx
+│   │   ├── 📄 Diccionario_C5.md
+│   │   ├── 📄 Diccionario_INEGI_ATUS.md
+│   │   ├── 📄 Diccionario_Kaggle.md
+│   │   ├── 📄 Diccionario_SSC.MD
+│   │   └── 📄 Nota.md
+│   │
+│   ├── 📄 Avance01_AyC.pdf
+│   ├── 📄 Diccionario_o_metadatos.docs
+│   └── 📄 Evaluacion_fuentes.pdf
+│
+├── 📂 Notebooks
+│   │
+│   ├── 📂 DatosCrudos_C5
+│   │   └── 📄 Donde.md
+│   │
+│   ├── 📂 DatosCrudos_INEGI_ATUS
+│   │   └── 📄 Donde.md
+│   │
+│   ├── 📂 DatosCrudos_KAGGLE
+│   │   └── 📄 Donde.md
+│   │
+│   ├── 📂 DatosCrudos_SSC
+│   │   └── 📄 Nota.md
+│   │
+│   └── 📂 Presentacion
+│       └── 📄 avance01.pdf
+│
+├── 📄 .gitignore
+└── 📄 README.md
 
 ## Nota sobre los datos crudos
 
