@@ -122,17 +122,7 @@ Proyecto-sobre-Analisis-de-hechos-de-transito-de-la-CDMX
 │
 ├── 📂 Data
 │   ├── 📦 CARPETA_DATOS.zip
-│   ├── 📓 Data.ipynb
-│   ├── 📄 README.md
-│   └── 📂 raw
-│       ├── 📂 c5
-│       │   └── 📄 .gitkeep
-│       ├── 📂 inegi
-│       │   └── 📄 .gitkeep
-│       ├── 📂 kaggle
-│       │   └── 📄 .gitkeep
-│       └── 📂 ssc
-│           └── 📄 .gitkeep
+│   └── 📓 Data.ipynb
 │
 ├── 📂 Docs
 │   │
