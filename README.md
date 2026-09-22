@@ -114,13 +114,25 @@ Información para la toma de decisiones
 
 El repositorio se organizará de la siguiente manera:
 
+```text
 Proyecto-sobre-Analisis-de-hechos-de-transito-de-la-CDMX
 │
 ├── 📂 Bitacora
 │   └── 📄 Bitacora_AC.md
 │
 ├── 📂 Data
-│   └── 📓 Primera_Lectura.ipynb
+│   ├── 📦 CARPETA_DATOS.zip
+│   ├── 📓 Data.ipynb
+│   ├── 📄 README.md
+│   └── 📂 raw
+│       ├── 📂 c5
+│       │   └── 📄 .gitkeep
+│       ├── 📂 inegi
+│       │   └── 📄 .gitkeep
+│       ├── 📂 kaggle
+│       │   └── 📄 .gitkeep
+│       └── 📂 ssc
+│           └── 📄 .gitkeep
 │
 ├── 📂 Docs
 │   │
@@ -130,7 +142,8 @@ Proyecto-sobre-Analisis-de-hechos-de-transito-de-la-CDMX
 │   │   ├── 📄 Diccionario_INEGI_ATUS.md
 │   │   ├── 📄 Diccionario_Kaggle.md
 │   │   ├── 📄 Diccionario_SSC.MD
-│   │   └── 📄 Nota.md
+│   │   ├── 📄 Nota.md
+│   │   └── 📄 diccionario_de_datos_atus_anual_1997_2025.csv
 │   │
 │   ├── 📄 Avance01_AyC.pdf
 │   ├── 📄 Diccionario_o_metadatos.docs
@@ -148,13 +161,15 @@ Proyecto-sobre-Analisis-de-hechos-de-transito-de-la-CDMX
 │   │   └── 📄 Donde.md
 │   │
 │   ├── 📂 DatosCrudos_SSC
-│   │   └── 📄 Nota.md
-│   │
-│   └── 📂 Presentacion
-│       └── 📄 avance01.pdf
+│   │   └── 📄 Donde.md
+│   └── 📄 Nota.md
+│
+├── 📂 Presentacion
+│   └── 📄 Avance01_Presentacion.pdf
 │
 ├── 📄 .gitignore
 └── 📄 README.md
+```
 
 ## Nota sobre los datos crudos
 
