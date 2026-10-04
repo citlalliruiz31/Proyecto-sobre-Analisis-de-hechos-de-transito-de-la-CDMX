@@ -435,3 +435,294 @@ Para organizarnos como equipo, estamos utilizando **Google Docs** para trabajar 
 Actualmente nuestro proyecto se encuentra **en proceso de corrección y consolidación del Avance01**. Los principales elementos conceptuales ya están definidos, mientras que las etapas técnicas de preparación de datos, ETL, PostgreSQL, SQL y Power BI quedan pendientes para las siguientes fases.
 
 Con esta bitácora dejamos registrado nuestro proceso de trabajo, las observaciones que recibimos de cada profesor, los acuerdos que tomamos, las acciones que realizamos y el estado actual de nuestro proyecto.
+# Bitácora del proyecto – Limpieza de datos
+
+## Proyecto
+
+**Análisis de hechos de tránsito de la Ciudad de México**
+
+En esta bitácora documentamos las actividades que hemos realizado durante la etapa de revisión y limpieza de los datos utilizados en nuestro proyecto de Inteligencia de Negocios.
+
+El propósito es mantener un registro de las decisiones tomadas, los problemas encontrados y las dudas que todavía necesitamos resolver antes de continuar con el análisis.
+
+---
+
+# Inicio de la etapa de limpieza de datos
+
+## Lunes – Revisión y organización de los datos crudos
+
+El lunes comenzamos una nueva etapa del proyecto enfocada en la revisión y limpieza de nuestros datos crudos.
+
+Hasta este momento habíamos trabajado principalmente en la definición del problema, la pregunta de negocio, las fuentes de información y la documentación correspondiente al primer avance. A partir de esta semana comenzamos a trabajar directamente con los archivos que posteriormente utilizaremos para realizar el análisis.
+
+Lo primero que hicimos fue organizar los datos de acuerdo con cada una de nuestras fuentes:
+
+- SSC.
+- C5.
+- INEGI.
+- Kaggle.
+
+Decidimos conservar los **datos crudos sin realizar modificaciones sobre los archivos originales**. A partir de ellos generaremos archivos nuevos con los datos que vayamos limpiando.
+
+Esto nos permitirá conservar evidencia de la información original y tener trazabilidad de las transformaciones realizadas.
+
+También comenzamos a revisar la estructura de los archivos para identificar:
+
+- Número de registros y columnas.
+- Nombres de las variables.
+- Tipos de datos.
+- Fechas disponibles.
+- Valores faltantes.
+- Posibles registros duplicados.
+- Folios repetidos.
+- Valores identificados como `SD`.
+- Variables relacionadas con alcaldías.
+- Variables relacionadas con horarios.
+- Variables de lesionados y fallecidos.
+
+Debido a la delimitación temporal de nuestro proyecto, establecimos que trabajaremos únicamente con información correspondiente a **2018 en adelante**.
+
+---
+
+# Martes – Desarrollo de la limpieza en Python
+
+El martes continuamos trabajando con las bases de datos y comenzamos a desarrollar formalmente el proceso de limpieza utilizando **Python y notebooks de Jupyter**.
+
+Decidimos trabajar cada fuente de manera independiente antes de intentar realizar cualquier integración entre ellas.
+
+Para mantener organizado nuestro trabajo creamos los siguientes notebooks:
+
+```text
+01_limpieza_C5.ipynb
+02_limpieza_SSC.ipynb
+03_limpieza_INEGI.ipynb
+04_limpieza_Kaggle.ipynb
+```
+
+Cada notebook contiene comentarios y explicaciones sobre las operaciones que estamos realizando para que posteriormente podamos identificar qué transformación se hizo, por qué se realizó y qué resultado produjo.
+
+Durante esta etapa comenzamos a trabajar con:
+
+1. Importación de las librerías necesarias.
+2. Lectura de los archivos originales.
+3. Revisión de las dimensiones de las bases.
+4. Normalización de los nombres de las columnas.
+5. Revisión de tipos de datos.
+6. Identificación de valores faltantes.
+7. Normalización de variables de texto.
+8. Conversión y revisión de fechas.
+9. Filtrado de registros desde 2018 en adelante.
+10. Revisión de las alcaldías.
+11. Revisión de fechas y horarios.
+12. Revisión de las variables de lesionados y fallecidos.
+13. Identificación de folios con valor `SD`.
+14. Identificación de folios repetidos.
+15. Identificación de posibles registros duplicados.
+
+Durante la revisión consideramos importante **no eliminar automáticamente información que todavía no sabemos interpretar correctamente**.
+
+Por esta razón, los registros con folios repetidos, valores `SD` o posibles duplicados se identificarán, pero por el momento se conservarán.
+
+---
+
+# Miércoles – Exposición del primer avance
+
+El miércoles realizamos la exposición correspondiente a nuestro **primer avance del proyecto**.
+
+Durante la presentación explicamos nuestro problema, la pregunta de negocio, las fuentes seleccionadas y la manera en que pretendemos analizar la frecuencia y severidad registrada de los hechos de tránsito.
+
+Después de nuestra exposición, la profesora **Liliana** nos realizó una observación importante relacionada con el proceso de limpieza que estamos comenzando.
+
+Durante nuestra exploración detectamos que existen **folios repetidos** y también registros en los que el folio aparece con el valor **`SD`**.
+
+Todavía no sabemos si un folio repetido representa necesariamente un registro duplicado o si un mismo folio puede aparecer varias veces porque existen diferentes personas, vehículos u otros elementos relacionados con un mismo hecho de tránsito.
+
+Por esta razón, la profesora Liliana nos indicó que debemos consultar esta situación con el profesor **Emilio**.
+
+Además, nos indicó que sería importante que el profesor Emilio nos proporcionara una **regla o criterio definido para determinar cómo debemos considerar estos folios y registros durante la limpieza**.
+
+Esta regla nos permitirá aplicar el mismo criterio sobre toda la información y justificar posteriormente las decisiones realizadas durante la limpieza.
+
+---
+
+# Preguntas pendientes para el profesor Emilio
+
+A partir de las observaciones realizadas durante la exposición dejamos pendientes las siguientes preguntas:
+
+### 1. ¿Cómo debemos tratar los folios repetidos?
+
+Necesitamos conocer si un folio repetido debe considerarse automáticamente como un duplicado o si puede existir más de un registro asociado con el mismo folio.
+
+### 2. ¿Cómo debemos tratar los folios con valor `SD`?
+
+Necesitamos conocer qué representa exactamente `SD` dentro de la fuente y establecer una regla para decidir si estos registros deben:
+
+- Conservarse.
+- Identificarse como información faltante.
+- Clasificarse de alguna manera especial.
+- Corregirse.
+- Excluirse de determinados análisis.
+
+### 3. ¿Qué regla debemos utilizar para determinar que un registro realmente está duplicado?
+
+Necesitamos confirmar si es suficiente comparar el folio o si debemos utilizar diferentes variables, por ejemplo:
+
+- Folio.
+- Fecha.
+- Hora.
+- Alcaldía.
+- Ubicación.
+- Tipo de hecho.
+- Personas involucradas.
+- Vehículos involucrados.
+
+No queremos eliminar registros únicamente porque compartan un folio sin conocer primero su significado.
+
+### 4. ¿Cómo debemos registrar nuestros datos crudos?
+
+También necesitamos confirmar cuál es la manera correcta de documentar los archivos originales utilizados en nuestro proyecto.
+
+Queremos saber si debemos registrar información como:
+
+- Nombre del archivo.
+- Fuente.
+- URL oficial de descarga.
+- Fecha de descarga.
+- Tamaño del archivo.
+- Número de registros.
+- Número de columnas.
+- Periodo disponible.
+- Formato.
+- Unidad de observación.
+
+Esta duda es importante porque algunas de nuestras fuentes contienen archivos demasiado grandes para almacenarlos directamente dentro del repositorio.
+
+---
+
+# Estrategia de limpieza acordada
+
+Después de las observaciones recibidas decidimos dividir nuestro proceso de limpieza en **dos etapas**.
+
+## Primera limpieza
+
+Esta es la limpieza que estamos realizando actualmente.
+
+El objetivo de esta etapa es preparar los datos sin tomar decisiones sobre aquellos registros cuyo tratamiento todavía necesita ser validado.
+
+Durante esta primera limpieza realizaremos:
+
+- Revisión de los archivos originales.
+- Normalización de nombres de columnas.
+- Normalización de textos.
+- Conversión de fechas.
+- Revisión de tipos de datos.
+- Identificación de valores faltantes.
+- Eliminación de datos que se encuentren fuera de nuestro rango temporal.
+- Conservación únicamente de información desde **2018 en adelante**.
+- Revisión de alcaldías.
+- Revisión de fechas y horarios.
+- Revisión de lesionados y fallecidos.
+- Identificación de folios `SD`.
+- Identificación de folios repetidos.
+- Identificación de posibles registros duplicados.
+
+### Regla importante de esta etapa
+
+Durante la primera limpieza **no eliminaremos registros únicamente porque tengan un folio repetido, un folio `SD` o porque sean identificados inicialmente como posibles duplicados**.
+
+Estos casos serán marcados para poder encontrarlos posteriormente.
+
+De esta manera tendremos una primera versión limpia en cuanto a estructura y periodo de análisis, pero conservaremos los registros que necesitan una decisión adicional.
+
+---
+
+# Segunda limpieza
+
+La segunda limpieza se realizará después de consultar al profesor Emilio.
+
+En esta etapa utilizaremos la **regla o criterio que nos proporcione** para determinar correctamente cómo debemos tratar:
+
+- Folios repetidos.
+- Folios con valor `SD`.
+- Posibles registros duplicados.
+- Registros relacionados con un mismo hecho.
+
+Una vez que tengamos esta indicación, documentaremos la regla dentro de nuestros notebooks y posteriormente la implementaremos mediante código en Python.
+
+La idea es evitar realizar modificaciones manuales registro por registro. En su lugar, queremos establecer una regla que pueda aplicarse de manera consistente sobre toda la base.
+
+Actualmente esta etapa queda registrada como:
+
+> **Regla para la segunda limpieza: PENDIENTE DE VALIDACIÓN CON EL PROFESOR EMILIO.**
+
+---
+
+# Decisión temporal del equipo
+
+Mientras recibimos la orientación correspondiente, nuestra decisión es **conservar los folios repetidos y los registros con `SD`**.
+
+También conservaremos los posibles registros duplicados hasta conocer los criterios que debemos utilizar para determinar si realmente representan información duplicada.
+
+Consideramos que eliminar estos registros antes de conocer su significado podría provocar pérdida de información importante.
+
+Por esta razón, durante la primera limpieza únicamente los identificaremos y marcaremos.
+
+---
+
+# Organización actual del proceso
+
+Actualmente nuestro flujo de trabajo queda organizado de la siguiente manera:
+
+```text
+DATOS CRUDOS
+     │
+     ▼
+PRIMERA LIMPIEZA
+     │
+     ├── Filtrar desde 2018
+     ├── Normalizar estructura
+     ├── Revisar tipos de datos
+     ├── Revisar valores faltantes
+     ├── Normalizar textos
+     ├── Revisar alcaldías
+     ├── Revisar fechas y horarios
+     ├── Identificar SD
+     ├── Identificar folios repetidos
+     └── Identificar posibles duplicados
+     │
+     ▼
+DATOS LIMPIOS – ETAPA 1
+     │
+     ▼
+VALIDACIÓN CON PROFESOR EMILIO
+     │
+     ▼
+REGLA PARA FOLIOS Y DUPLICADOS
+     │
+     ▼
+SEGUNDA LIMPIEZA
+     │
+     ▼
+DATOS LIMPIOS DEFINITIVOS
+     │
+     ▼
+ANÁLISIS / BASE DE DATOS / POWER BI
+```
+
+---
+
+# Estado actual
+
+Hasta este momento hemos avanzado en la organización de los datos crudos y en la construcción de los notebooks de limpieza para cada fuente.
+
+La primera limpieza se encuentra enfocada en obtener información correspondiente a nuestro periodo de estudio y en identificar problemas de calidad sin eliminar información que todavía necesita ser validada.
+
+Nuestro siguiente punto importante será consultar al profesor Emilio para establecer la regla que utilizaremos en la segunda limpieza.
+
+Una vez que tengamos esta regla, actualizaremos esta bitácora y nuestros notebooks para dejar documentada la decisión y continuar con la generación de los datos limpios definitivos.
+
+---
+
+## Nota
+
+Esta bitácora continuará actualizándose conforme avancemos en el proyecto. Cada decisión relacionada con la modificación, eliminación o transformación de los datos deberá quedar documentada para mantener la trazabilidad del proceso de limpieza.
