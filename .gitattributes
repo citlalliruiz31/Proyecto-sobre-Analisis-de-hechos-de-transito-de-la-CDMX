@@ -1,1 +1,2 @@
-Data/*.zip filter=lfs diff=lfs merge=lfs -text
+Avance02/*.zip filter=lfs diff=lfs merge=lfs -text
+Avance02/resultados/resultados_C5/etapa1/*.csv filter=lfs diff=lfs merge=lfs -text
