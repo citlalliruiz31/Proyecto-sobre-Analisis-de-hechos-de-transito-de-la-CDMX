@@ -59,6 +59,7 @@ Avance03/
 │   ├── 01_ETL_SSC_Avance03 .ipynb
 │   ├── 02_ETL_C5_Avance03 .ipynb
 │   ├── 03_ETL_INEGI_ATUS_Avance03 .ipynb
+│   ├── 04_Analisis_Estadistico_Avance03 .ipynb
 │   ├── 04b_Analisis_Estadistico_C5_Avance03 .ipynb
 │   ├── 04c_Analisis_Estadistico_INEGI_ATUS_Avance03 .ipynb
 │   └── 05_Conciliacion_Bitacora_Auditoria_Avance03 .ipynb
@@ -70,7 +71,7 @@ Avance03/
     └── Documento de reglas .md
 ```
 
-En esta carpeta no están los datos crudos, los CSV procesados ni las bitácoras. Tampoco está el notebook `04` de análisis SSC; los resultados SSC incluidos en este avance se documentan en el informe. Los notebooks conservan salidas de ejecuciones previas, cuyas rutas corresponden al equipo donde se generaron.
+En esta carpeta no están los datos crudos, los CSV procesados ni las bitácoras. Los notebooks conservan salidas de ejecuciones previas, cuyas rutas corresponden al equipo donde se generaron.
 
 ## 5. Evidencias de resultados por notebook
 
@@ -81,11 +82,12 @@ Cada notebook disponible conserva las salidas de sus celdas ejecutadas. Para fac
 | ETL SSC | [01_ETL_SSC_Avance03 .html](Evidencias/01_ETL_SSC_Avance03%20.html) |
 | ETL C5 | [02_ETL_C5_Avance03 .html](Evidencias/02_ETL_C5_Avance03%20.html) |
 | ETL INEGI-ATUS | [03_ETL_INEGI_ATUS_Avance03 .html](Evidencias/03_ETL_INEGI_ATUS_Avance03%20.html) |
+| Análisis SSC | [04_Analisis_Estadistico_Avance03 .html](Evidencias/04_Analisis_Estadistico_Avance03%20.html) |
 | Análisis C5 | [04b_Analisis_Estadistico_C5_Avance03 .html](Evidencias/04b_Analisis_Estadistico_C5_Avance03%20.html) |
 | Análisis INEGI-ATUS | [04c_Analisis_Estadistico_INEGI_ATUS_Avance03 .html](Evidencias/04c_Analisis_Estadistico_INEGI_ATUS_Avance03%20.html) |
 | Conciliación y auditoría | [05_Conciliacion_Bitacora_Auditoria_Avance03 .html](Evidencias/05_Conciliacion_Bitacora_Auditoria_Avance03%20.html) |
 
-El notebook 05 conserva un resultado previo que indica que SSC no tenía conciliación disponible en la ruta usada entonces. Esa salida se mantiene como evidencia histórica y **no debe interpretarse como auditoría vigente** de las corridas citadas en este README. El notebook de análisis SSC `04` no está en esta carpeta y, por tanto, no tiene una exportación HTML independiente.
+El notebook 05 conserva un resultado previo que indica que SSC no tenía conciliación disponible en la ruta usada entonces. Esa salida se mantiene como evidencia histórica y **no debe interpretarse como auditoría vigente** de las corridas citadas en este README.
 
 La presentación ejecutiva de 10 diapositivas está en [`Presentacion_Avance03.pptx`](Presentacion/Presentacion_Avance03.pptx).
 
@@ -100,11 +102,12 @@ Para reproducir los resultados completos, primero se deben disponer las fuentes 
    1. [`01_ETL_SSC_Avance03 .ipynb`](Notebooks/01_ETL_SSC_Avance03%20.ipynb)
    2. [`02_ETL_C5_Avance03 .ipynb`](Notebooks/02_ETL_C5_Avance03%20.ipynb)
    3. [`03_ETL_INEGI_ATUS_Avance03 .ipynb`](Notebooks/03_ETL_INEGI_ATUS_Avance03%20.ipynb)
-   4. [`04b_Analisis_Estadistico_C5_Avance03 .ipynb`](Notebooks/04b_Analisis_Estadistico_C5_Avance03%20.ipynb)
-   5. [`04c_Analisis_Estadistico_INEGI_ATUS_Avance03 .ipynb`](Notebooks/04c_Analisis_Estadistico_INEGI_ATUS_Avance03%20.ipynb)
-   6. [`05_Conciliacion_Bitacora_Auditoria_Avance03 .ipynb`](Notebooks/05_Conciliacion_Bitacora_Auditoria_Avance03%20.ipynb), cuando estén disponibles las carpetas exportadas y bitácoras.
+   4. [`04_Analisis_Estadistico_Avance03 .ipynb`](Notebooks/04_Analisis_Estadistico_Avance03%20.ipynb)
+   5. [`04b_Analisis_Estadistico_C5_Avance03 .ipynb`](Notebooks/04b_Analisis_Estadistico_C5_Avance03%20.ipynb)
+   6. [`04c_Analisis_Estadistico_INEGI_ATUS_Avance03 .ipynb`](Notebooks/04c_Analisis_Estadistico_INEGI_ATUS_Avance03%20.ipynb)
+   7. [`05_Conciliacion_Bitacora_Auditoria_Avance03 .ipynb`](Notebooks/05_Conciliacion_Bitacora_Auditoria_Avance03%20.ipynb), cuando estén disponibles las carpetas exportadas y bitácoras.
 
-El notebook de análisis SSC `04` no forma parte de los archivos actuales. Cuando se ejecutan con sus insumos, los notebooks ETL generan salidas por `RUN_ID` (`YYYYMMDD_HHMMSS`); el notebook `05` requiere esas salidas para realizar la auditoría global.
+Cuando se ejecutan con sus insumos, los notebooks ETL generan salidas por `RUN_ID` (`YYYYMMDD_HHMMSS`); el notebook `05` requiere esas salidas para realizar la auditoría global.
 
 ---
 
